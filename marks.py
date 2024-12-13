@@ -1,87 +1,72 @@
-m=int(input("Enter the number of students : "))
+Mark = []
+n = int(input("Enter the number of Students :"))
+for i in range(n):
+    mark = int(input(" Enter the Marks : "))
+    Mark.append(mark)
+    
+print("List of fds Marks",(Mark))
 
-FDS=[]
-print("Enter the marks of the students : ")
-for i in range (0,m):
-    element=int(input())
-    FDS.append(element)
-print("list of marks of students in FDS",FDS)
+# Average marks of students
 
-#function to count average marks of student
-def average(list1,number):
-   s=0
-   for i in range(0,m):
-       s += list1[i]
-   return(s/number)
-Average=average(FDS,m)
+def average_marks(Mark):
+    total_marks = 0
+    total_students = 0
 
-#function to find maximum marks of student
-def maxmarks(list1,number):
-    max=0
-    for i in range(0,m):
-        if max<list1[i]:
-           max=list1[i]
+    for j in range(len(Mark)):
+        if (Mark[j] != -1):
+            total_students += 1
+    
+    for i in range(len(Mark)):
+        if (Mark[i] != -1):
+            total_marks += Mark[i]
+    
+    avg = total_marks/total_students
+    
+    return(avg)
+    
+print("Average Marks : ",average_marks(Mark))
+
+# highest marks of students 
+
+def highest_marks(Mark):
+    max = 0
+    for i in range(len(Mark)):
+        if max < Mark[i]:
+           max = Mark[i]
     return max
-maximum=maxmarks(FDS,m)
 
+print(" Highest marks of students : ",highest_marks(Mark))
 
-#function to find minimum marks of student
-def minmarks(list1,number):
-    min=list1[0]
-    for i in range(0,m):
-        if min>list1[i]:
-           min=list1[i]
+# lowest Marks of students
+
+def lowest_marks(Mark):
+    min = Mark[0]
+    for i in range(len(Mark)):
+        if min > Mark[i] and Mark[i] != -1:
+           min = Mark[i]
     return min
-minimum=minmarks(FDS,m)
 
-#function to find largest frequency
-def largestmfreq(number,list1):
-   count=0
-   check=maxmarks(list1,number)
-   for i in range(0,m):
-      if check ==list1[i]:
-         count+=1
-   return count
-lfreq=largestmfreq(m,FDS)
+print(" lowest marks of students : ",lowest_marks(Mark))
 
+#count of absent students
 
-#function to find absent number of student
-def absent(list1,number):
-   count=0
-   for i in range(0,m):
-      if list1[i]==0:
-         count+=1
-   return count
-Absent=absent(FDS,m)
+def absent_students(Mark):
+    count = 0
+    for i in range(len(Mark)):
+         if Mark[i]== -1:
+            count+=1
+    return count
+    
+print("Absent Student Marks :",absent_students(Mark))
 
-flag =1
-while (flag==1): 
+#highest frequency of marks
 
-  print("1=the average score of  class:")
-  print("2=highest score of class :")
-  print("3=lowest score of class:")
-  print("4=absent student's count:")
-  print("5=display marks with highest frequency")
-  print("6=exit")
-  choice=int(input("enter your choice:"))
-   
-  if choice==1:
-     print("Average marks of student in FDS",Average)
+def highest_frequency(Mark):
+    count = 0
+    check = highest_marks(Mark)
+    for i in range(len(Mark)):
+        if check == Mark[i]:
+           count += 1
+    return count
 
-  elif choice==2:
-     print("Maximum marks in FDS is",maximum)
-  elif choice==3:
-     print("minimum marks in FDS is ",minimum)
-
-  elif choice==4: 
-     print("number of students absent for exam ",Absent)
-
-  elif choice==5:
-     print("maximum frequency of marks is ",lfreq) 
-  elif choice==6:
-     flag=0
-  else:
-    print("enter valid choice")
-  
- 	
- 
+print("highest frequency of marks : ",highest_frequency(Mark))         
