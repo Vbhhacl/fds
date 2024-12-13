@@ -41,10 +41,10 @@ while (flag==1):
  
   choice=int(input("enter your choice:"))
   if choice==1:
-     print("search by bubble sorting method",bubble(y) )
+     bubble(y) 
 
   elif choice==2:
-     print("search by selection sorting method",selection(y))
+     selection(y)
    
   elif choice==3:
      flag=0
